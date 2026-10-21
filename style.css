@@ -1,59 +1,89 @@
-* {
-    margin: 0;
-    padding: 0;
+/* ===== Configurações gerais ===== */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #f4f8fb;
     color: #222;
     line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
 
-/* Cabeçalho */
+a {
+    -webkit-tap-highlight-color: transparent;
+}
 
+a:focus-visible {
+    outline: 3px solid #f4b400;
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ===== Cabeçalho ===== */
 header {
     background-color: #0b4f71;
-    color: white;
+    color: #fff;
     text-align: center;
     padding: 30px 20px;
 }
 
 header h1 {
-    margin-bottom: 5px;
+    margin: 0 0 5px;
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    line-height: 1.2;
 }
 
 header p {
-    margin-bottom: 20px;
+    margin: 10px 0 20px;
 }
 
-
-/* Menu */
-
+/* ===== Navegação ===== */
 nav {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 25px;
 }
 
 nav a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
+    padding: 5px 2px;
 }
 
 nav a:hover {
     text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
-
-/* Conteúdo */
-
+/* ===== Conteúdo principal ===== */
 main {
+    width: 100%;
     max-width: 1100px;
-    margin: auto;
+    margin-inline: auto;
 }
 
 section {
@@ -61,182 +91,278 @@ section {
 }
 
 section h2 {
-    text-align: center;
-    margin-bottom: 25px;
+    margin: 0 0 25px;
     color: #0b4f71;
+    text-align: center;
+    line-height: 1.25;
 }
 
+section p {
+    overflow-wrap: break-word;
+}
 
-/* Página inicial */
-
+/* ===== Apresentação inicial ===== */
 .inicio {
     display: flex;
     align-items: center;
     gap: 40px;
+    min-height: 250px;
 }
 
-.inicio div {
+.inicio > div {
     flex: 1;
-}
-
-.inicio img {
-    width: 45%;
-    border-radius: 10px;
+    min-width: 0;
 }
 
 .inicio h2 {
     text-align: left;
-    font-size: 32px;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
 }
 
 .inicio p {
     margin-bottom: 25px;
 }
 
-
-/* Botão */
-
+/* ===== Botões ===== */
 .botao {
     display: inline-block;
-    background-color: #0b4f71;
-    color: white;
+    max-width: 100%;
     padding: 12px 20px;
+    border: 2px solid #0b4f71;
     border-radius: 6px;
+    background-color: #0b4f71;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
     text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: background-color 0.15s ease;
 }
 
 .botao:hover {
     background-color: #083b55;
+    border-color: #083b55;
 }
 
+.botao:focus-visible {
+    outline: 3px solid #f4b400;
+    outline-offset: 4px;
+}
 
-/* Cards */
-
+/* ===== Cartões de serviços ===== */
 .cards {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
+    align-items: stretch;
 }
 
 .card {
-    background-color: white;
+    min-width: 0;
     padding: 25px;
     border-radius: 10px;
-    flex: 1;
-    box-shadow: 0 2px 8px #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
 }
 
 .card h3 {
+    margin: 0 0 10px;
     color: #0b4f71;
-    margin-bottom: 10px;
 }
 
+.card p {
+    margin: 0 0 18px;
+}
 
-/* Galeria */
+.card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    object-fit: cover;
+}
 
+/* ===== Galeria, se utilizada ===== */
 .fotos {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
 }
 
 .fotos img {
-    width: 33.33%;
+    width: 100%;
     height: 220px;
-    object-fit: cover;
     border-radius: 10px;
+    object-fit: cover;
 }
 
-
-/* Preços */
-
+/* ===== Preços ===== */
 .observacao {
-    text-align: center;
     margin-bottom: 25px;
+    text-align: center;
 }
 
 .precos {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
 }
 
 .preco {
-    background-color: white;
-    text-align: center;
     padding: 25px;
-    flex: 1;
     border-radius: 10px;
-    box-shadow: 0 2px 8px #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    text-align: center;
 }
 
 .preco h3 {
+    margin-top: 0;
     color: #0b4f71;
 }
 
 .preco strong {
     font-size: 24px;
+    color: #083b55;
 }
 
-
-/* Sobre */
-
+/* ===== Sobre ===== */
 .sobre {
-    background-color: white;
     margin: 20px;
     border-radius: 10px;
+    background-color: #fff;
 }
 
+.sobre p + p {
+    margin-bottom: 0;
+}
 
-/* Contato */
-
+/* ===== Contato ===== */
 .contato {
     text-align: center;
 }
 
-
-/* Rodapé */
-
-footer {
-    background-color: #0b4f71;
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
+.contato p {
+    margin-bottom: 20px;
 }
 
+.contato a:not(.botao) {
+    color: #084e70;
+    text-underline-offset: 3px;
+}
 
-/* Responsividade */
+/* ===== Rodapé ===== */
+footer {
+    padding: 30px 20px;
+    background-color: #0b4f71;
+    color: #fff;
+    text-align: center;
+}
 
-@media (max-width: 700px) {
+footer h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+}
 
-    nav {
-        flex-direction: column;
-        gap: 10px;
+footer p {
+    margin: 5px 0;
+}
+
+/* ===== Tablets ===== */
+@media (max-width: 850px) {
+    section {
+        padding: 40px 18px;
+    }
+
+    .cards,
+    .precos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .inicio {
-        flex-direction: column;
+        gap: 25px;
     }
 
-    .inicio img {
-        width: 100%;
+    .card {
+        padding: 20px;
+    }
+}
+
+/* ===== Celulares ===== */
+@media (max-width: 600px) {
+    header {
+        padding: 25px 16px;
+    }
+
+    nav {
+        gap: 8px 18px;
+    }
+
+    section {
+        padding: 35px 16px;
+    }
+
+    .inicio {
+        min-height: auto;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 
     .inicio h2 {
         text-align: center;
     }
 
-    .cards {
-        flex-direction: column;
+    .inicio p {
+        text-align: center;
     }
 
-    .fotos {
-        flex-direction: column;
-    }
-
-    .fotos img {
+    .inicio .botao {
+        display: block;
         width: 100%;
     }
 
-    .precos {
-        flex-direction: column;
+    .cards,
+    .precos,
+    .fotos {
+        grid-template-columns: minmax(0, 1fr);
     }
 
+    .card img {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .fotos img {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .sobre {
+        margin: 10px;
+        padding: 30px 20px;
+    }
+
+    .preco {
+        padding: 22px;
+    }
+
+    .contato .botao {
+        width: 100%;
+    }
+
+    footer {
+        padding: 25px 16px;
+    }
+}
+
+/* ===== Preferência por menos movimento ===== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }
